@@ -24,7 +24,7 @@ export class SendGridService {
     });
     sgMail.setApiKey(SENDGRID_API_KEY);
     const msgToJUN = {
-      to: 'bariaenvios@gmail.com',
+      to: 'jmirandauria@gmail.com',
       /** This is the sender email account */
       from: {
         name: 'Packuba',
