@@ -54,10 +54,7 @@ export class TrackService {
      
 
             const result = await this.fetchPosts(code);
-            console.log(result.data);
-            
-     
-           }
+              }
     
     } catch (e) {
       return [];
