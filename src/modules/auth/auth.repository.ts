@@ -34,6 +34,7 @@ export class AuthRepository {
             image: true,
             theme: true,
             phone: true,
+            codes: true
           })
           .populate([
             {
@@ -77,6 +78,7 @@ export class AuthRepository {
           role: true,
           theme: true,
           phone: true,
+          codes: true
         })
         .populate([
           {
@@ -115,6 +117,7 @@ export class AuthRepository {
             image: true,
             theme: true,
             phone: true,
+            codes: true
           })
           .populate([
             {
@@ -155,6 +158,7 @@ export class AuthRepository {
           role: true,
           theme: true,
           phone: true,
+          codes: true
         })
         .populate([
           {
@@ -179,7 +183,8 @@ export class AuthRepository {
       image: true,
       theme: true,
       phone: true,
-      status: true
+      status: true,
+      codes: true
     }).populate([
       {
         path: 'image',

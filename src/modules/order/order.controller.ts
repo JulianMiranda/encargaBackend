@@ -65,4 +65,9 @@ export class OrderController {
   getPrice(): number {
     return this.orderRepository.getPrice();
   }
+
+  @Get('/trackCodes/:id')
+  trackCodes(@Param('id') id: string): Promise<any> {
+    return this.orderRepository.trackCodes(id);
+  }
 }

@@ -23,6 +23,7 @@ import { OrderController } from './modules/order/order.controller';
 import { ExpoService } from './services/expo.service';
 import { SendGridService } from './services/sendgrid.service';
 import { GetTokenMiddleware } from './middlewares/get-token.middleware';
+import { TrackService } from './services/track.service';
 
 @Module({
   imports: [
