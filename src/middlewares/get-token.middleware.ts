@@ -43,7 +43,7 @@ import { verifyJWT } from 'src/utils/verifyJWS';
             image: nw.name ? getDefaultImage(nw.name) : getDefaultImage('Anonymous'),
             role: nw.role || ROLES.CUN,
             status: nw.status,
-            codes: nw.codes.length > 0 ? nw.codes : []
+            codes: nw.codes && nw.codes.length > 0 ? nw.codes : []
           };
           if (nw.email) user.email = nw.email;
           if (nw.phone) user.phone = nw.phone;
