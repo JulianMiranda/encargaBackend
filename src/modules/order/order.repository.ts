@@ -142,13 +142,36 @@ export class OrderRepository {
   getPrice(): number {
     try {
      
-      return 22.00;
+      return 26.00;
     } catch (e) {
       if (e.status === 404) throw e;
       else
         throw new InternalServerErrorException('getPrice Database error', e);
     }
   }
+
+  getMN(): number {
+    try {
+     
+      return 70.00;
+    } catch (e) {
+      if (e.status === 404) throw e;
+      else
+        throw new InternalServerErrorException('getPrice Database error', e);
+    }
+  }
+
+  getMLC(): number {
+    try {
+     
+      return 125.00;
+    } catch (e) {
+      if (e.status === 404) throw e;
+      else
+        throw new InternalServerErrorException('getPrice Database error', e);
+    }
+  }
+
   async trackCodes(id: string): Promise<any> {
     try {
       const user = await this.userDb.findById(id, {
