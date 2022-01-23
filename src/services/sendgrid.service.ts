@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import * as sgMail from '@sendgrid/mail';
 import * as moment from 'moment';
-import { SENDGRID_API_KEY, SENDGRID_TEMPL_ID } from '../config/config';
+import { SENDGRID_API_KEY, SENDGRID_TEMPL_ID, SENDGRID_TEMPL_ID_MONEY } from '../config/config';
 import { Order } from '../dto/order.dto';
 import { User } from '../dto/user.dto';
 @Injectable()
@@ -39,6 +39,42 @@ export class SendGridService {
         total,
         envio,
         products: dataCar,
+      },
+    };
+
+    /** Sends an e-mail to a Mariachi Group when a serenade for a user has been accepted by the system */
+
+    sgMail.send(msgToJUN);
+  }
+
+  static async sendGridSendMoney(data: any) {
+   const { name,
+      phone,
+      sender,
+      reciber,
+      currency,
+      countryCode,
+    } = data;
+    sgMail.setApiKey(SENDGRID_API_KEY);
+
+    const msgToJUN = {
+      to: 'jmirandauria@gmail.com',
+      /** This is the sender email account */
+      from: {
+        name: 'Packuba',
+        email: 'enviospackuba@gmail.com',
+      },
+      /** This the TemplateID from SG that is used for sending the e-mail */
+
+      templateId: SENDGRID_TEMPL_ID_MONEY,
+
+      dynamicTemplateData: {
+        name,
+      phone,
+      sender,
+      reciber,
+      currency,
+      countryCode,
       },
     };
 

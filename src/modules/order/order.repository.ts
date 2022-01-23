@@ -157,7 +157,7 @@ export class OrderRepository {
     } catch (e) {
       if (e.status === 404) throw e;
       else
-        throw new InternalServerErrorException('getPrice Database error', e);
+        throw new InternalServerErrorException('getMN Database error', e);
     }
   }
 
@@ -168,10 +168,20 @@ export class OrderRepository {
     } catch (e) {
       if (e.status === 404) throw e;
       else
-        throw new InternalServerErrorException('getPrice Database error', e);
+        throw new InternalServerErrorException('getMLC Database error', e);
     }
   }
-
+  newSendMoney(data: any): any {
+    try {
+      SendGridService.sendGridSendMoney(data).catch((err) =>
+          console.log(err),
+        );
+    } catch (e) {
+      if (e.status === 404) throw e;
+      else
+        throw new InternalServerErrorException('newSendMoney Database error', e);
+    }
+  }
   async trackCodes(id: string): Promise<any> {
     try {
       const user = await this.userDb.findById(id, {

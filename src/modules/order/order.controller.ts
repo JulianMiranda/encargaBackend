@@ -79,4 +79,9 @@ export class OrderController {
   trackCodes(@Param('id') id: string): Promise<any> {
     return this.orderRepository.trackCodes(id);
   }
+
+  @Post('/newSendMoney')
+  newSendMoney(@Body() data: any): Promise<any> {
+    return this.orderRepository.newSendMoney(data);
+  }
 }
