@@ -28,6 +28,13 @@ export class SubcategoryController {
   getList(@Body() query: MongoQuery): any {
     return this.subcategoryRepository.getList(query);
   }
+
+  @Post('/getListUnAuth')
+  @UsePipes(new TransformQuery())
+  getListUnAuth(@Body() query: MongoQuery): any {
+    return this.subcategoryRepository.getListUnAuth(query);
+  }
+
   @UseGuards(AuthenticationGuard)
   @Get('/getOne/:id')
   getOne(@Param('id') id: string): Promise<Subcategory> {

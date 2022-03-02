@@ -42,6 +42,28 @@ export class SubcategoryRepository {
     }
   }
 
+  async getListUnAuth(query: MongoQuery): Promise<any> {
+    try {
+      const { filter, projection, sort, limit, skip, page, population } = query;
+      const [count, subcategories] = await Promise.all([
+        this.subcategoryDb.countDocuments(filter),
+        this.subcategoryDb
+          .find(filter, projection)
+          .sort(sort)
+          .limit(limit)
+          .skip(skip)
+          .populate(population),
+      ]);
+      const totalPages = limit !== 0 ? Math.floor(count / limit) : 1;
+      return { count, page, totalPages, data: subcategories };
+    } catch (e) {
+      throw new InternalServerErrorException(
+        'Filter subcategories Database error',
+        e,
+      );
+    }
+  }
+
   async getOne(id: string): Promise<Subcategory> {
     try {
       const document = await this.subcategoryDb.findOne({ _id: id }).populate([
