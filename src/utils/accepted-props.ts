@@ -57,6 +57,7 @@ const checkSubcategoriesProps = (
 ): Partial<Subcategory> => {
   const props = [
     'name',
+    'description',
     'status',
     'images',
     'category',
